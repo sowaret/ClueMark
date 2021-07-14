@@ -1,0 +1,68 @@
+.notepad {
+	background: #D8D4CB; /* tan */
+	color: #000;
+	position: relative;
+	width: 350px;
+}
+
+	.panel-toggle,
+	.game-manager-toggle,
+	.host-indicator {
+		background: url(../../img/svg/settings-white.svg) no-repeat center /
+			20px;
+		border: 0;
+		cursor: pointer;
+		height: 32px;
+		outline: none;
+		position: absolute;
+		right: 0;
+		top: 5px;
+		transition: transform .2s;
+		width: 32px;
+		z-index: 1;
+	}
+	.game-manager-open .game-manager-toggle {
+		background-image: url(../../img/svg/settings.svg);
+		transform: rotate(-60deg);
+	}
+	.game-active .game-manager-toggle {
+		background-image: url(../../img/svg/make-suggestion-white.svg);
+	}
+	.game-active.game-manager-open .game-manager-toggle {
+		background-image: url(../../img/svg/make-suggestion.svg);
+		transform: none;
+	}
+
+	.roomToggle {
+		background-image: url(../../img/svg/room-white.svg);
+		right: 34px;
+	}
+	.roomToggle.joined {
+		background-image: url(../../img/svg/room-green.svg);
+	}
+	.room-open .roomToggle {
+		background-image: url(../../img/svg/room.svg);
+	}
+
+	.host-indicator {
+		background-image: url(../../img/svg/crown.svg);
+		cursor: default;
+		display: none;
+		right: 67px;
+		z-index: 0;
+	}
+	.is-host .host-indicator {
+		display: block;
+	}
+
+	.panel,
+	.game-manager {
+		background: rgba(0,0,0,.5);
+		font-size: 12px;
+		position: absolute;
+		width: 100%;
+	}
+	.panel.open,
+	.game-manager.open {
+		height: 100%;
+	}

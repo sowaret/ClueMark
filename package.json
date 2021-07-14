@@ -1,0 +1,50 @@
+{
+	"name": "ClueMark",
+	"version": "1.0.0",
+	"description": "Online Clue notepad and card manager to accompany your game",
+	"author": "Sowaret <atomsowaret@gmail.com>",
+	"license": "ISC",
+	"repository": "github:sowaret/ClueMark",
+	"type": "module",
+	"scripts": {
+		"start": "parcel frontend/index.html",
+		"build": "parcel build frontend/index.html",
+		"server": "node backend/server.js"
+	},
+	"dependencies": {
+		"@reduxjs/toolkit": "^1.5.0",
+		"@sowaret/redux-websocket-middleware": "^1.2.0",
+		"axios": "^0.21.1",
+		"cors": "^2.8.5",
+		"express": "^4.17.1",
+		"mongoose": "^5.12.1",
+		"react": "^17.0.1",
+		"react-dom": "^17.0.1",
+		"react-redux": "^7.2.3",
+		"ws": "^7.4.4"
+	},
+	"devDependencies": {
+		"@babel/core": "^7.13.10",
+		"babel-preset-nano-react-app": "^0.1.0",
+		"parcel": "^2.0.0-beta.2"
+	},
+	"babel": {
+		"presets": [
+			"nano-react-app"
+		],
+		"plugins": [
+			[
+				"@babel/plugin-proposal-class-properties",
+				{
+					"loose": true
+				}
+			],
+			[
+				"@babel/plugin-transform-react-jsx",
+				{
+					"pragmaFrag": "React.Fragment"
+				}
+			]
+		]
+	}
+}

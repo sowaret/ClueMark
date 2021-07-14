@@ -1,0 +1,58 @@
+.card {
+	border-bottom: 1px solid #ADAAA2;
+	display: grid;
+	grid-template-columns: 1fr repeat(3, 33px);
+	overflow: hidden;
+	transition: height .2s;
+	height: 32px;
+}
+.card.selected {
+	background: #CEA;
+}
+.cd-6, /* Orchid */
+.notepad.useDrOrchid .cd-3, /* White */
+.notepad.hidePoison .cd-13 { /* Poison */
+	height: 0;
+	border: 0;
+}
+.notepad.useDrOrchid .cd-6 { /* Orchid */
+	border-bottom: 1px solid #ADAAA2;
+	height: 32px;
+}
+
+	.card .title {
+		display: inline-block;
+		font-size: 14px;
+		padding: 8px;
+		vertical-align: top;
+	}
+
+	.sec-suspect .title {
+		background-image: linear-gradient(
+				to right,
+				rgba(216,212,203,1) 44%,
+				rgba(0,0,0,0) 100%
+			),
+			url(../../img/characters-eyes.png);
+		background-position: right 0;
+	}
+	.sec-suspect .card.selected .title {
+		background-image: linear-gradient(
+				to right,
+				rgba(204,238,170,1) 44%,
+				rgba(0,0,0,0) 100%
+			),
+			url(../../img/characters-eyes.png);
+	}
+
+	.sec-suspect .cd-1 .title { background-position: 100% -96px; }
+
+	.sec-suspect .cd-2 .title { background-position: 100% -32px; }
+
+	.sec-suspect .cd-3 .title { background-position: 100% -64px; }
+
+	.sec-suspect .cd-4 .title { background-position: 100% -128px; }
+
+	.sec-suspect .cd-5 .title { background-position: 100% -160px; }
+
+	.sec-suspect .cd-6 .title { background-position: 100% -192px; }

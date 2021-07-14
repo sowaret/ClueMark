@@ -1,0 +1,20 @@
+.suggestion-type {
+	background: url(../../../../img/svg/suspect.svg) no-repeat 0 6px / 20px;
+	font-size: 14px;
+	padding: 8px 0 8px 25px;
+}
+.suggestion-type.weapon {
+	background-image: url(../../../../img/svg/wrench.svg);
+}
+.suggestion-type.room {
+	background-image: url(../../../../img/svg/room-tan.svg);
+}
+.suggestion-type.player {
+	background-image: url(../../../../img/svg/person-tan.svg);
+}
+.bt.send-suggestion {
+	background: #C9BFAB url(../../../../img/svg/send-suggestion.svg)
+		no-repeat 6px 4px / 21px;
+	margin: 10px;
+	padding-left: 30px;
+}

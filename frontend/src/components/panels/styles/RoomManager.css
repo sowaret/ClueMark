@@ -1,0 +1,99 @@
+/* RoomManager */
+.roomExit {
+	display: none;
+	text-align: center;
+}
+.roomExit.enabled {
+	display: block;
+}
+
+	.roomExit label,
+	.roomExit .roomCode {
+		display: block;
+		margin: 8px auto;
+	}
+
+.roomEntry,
+.roomExit {
+	color: #7F765B;
+	font-size: 16px;
+	margin-top: 15px;
+	text-align: center;
+}
+.roomEntry.disabled {
+	display: none;
+}
+
+	.roomEntry label {
+		display: block;
+		margin-bottom: 8px;
+	}
+	.roomEntry input {
+		margin-bottom: 14px;
+	}
+
+	.rm-inp {
+		background: transparent;
+		border: 1px solid #7F765B;
+		border-width: 0 0 1px;
+		font-size: 35px;
+		outline: none;
+		padding: 0 0 8px;
+		text-align: center;
+		width: 200px;
+	}
+
+	.roomEntry-error {
+		color: #F00;
+		display: none;
+		font-size: 12px;
+		margin: -4px 0 14px;
+	}
+	.roomEntry-error.show {
+		display: block;
+	}
+
+	/* .nameEntry */
+
+		.pName {
+			font-size: 28px;
+			/*margin-bottom: 14px;*/
+			text-transform: uppercase;
+		}
+
+	.roomCode {
+		margin-left: 45px;
+		text-transform: uppercase;
+		vertical-align: middle;
+		width: 130px;
+	}
+
+	.roomJoin {
+		background: url(../../../img/svg/right-arrow.svg) no-repeat center / 35px;
+		margin-top: -20px;
+		opacity: 1;
+		padding: 22px;
+		vertical-align: middle;
+	}
+
+	.roomJoin[disabled] {
+		cursor: default;
+		opacity: .3;
+	}
+
+	/* .createRoomSection */
+	.post .createRoomSection {
+		background: url(../../../img/svg/loading-animated.svg) no-repeat center;
+		margin: -7px 0 5px;
+		padding: 12px 0;
+	}
+		.post .createRoomSection * {
+			display: none;
+		}
+
+		.roomCreate {
+			color: #7F765B;
+			margin-left: 4px;
+			padding: 0;
+			text-decoration: underline;
+		}

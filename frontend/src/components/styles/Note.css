@@ -1,0 +1,39 @@
+.note {
+	background: no-repeat center / 30px;
+	border: 1px solid #ADAAA2;
+	border-width: 0 0 0 1px;
+	cursor: pointer;
+	height: 32px;
+	user-select: none;
+	width: 32px;
+}
+.note.full {
+	border-width: 1px;
+}
+.note--2 {
+	background-image: url(../../img/svg/circle.svg);
+}
+.note--1 {
+	background-image: url(../../img/svg/close.svg);
+}
+.note-1 {
+	background: #B00;
+}
+.note-2 {
+	background: #080;
+}
+.note-3 {
+	background: #C90;
+}
+.note-4 {
+	background: #FFF;
+}
+.note-5 {
+	background: #17C;
+}
+.note-6 {
+	background: #808;
+}
+.note-7 {
+	background: #000;
+}

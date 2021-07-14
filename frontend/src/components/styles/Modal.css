@@ -1,0 +1,36 @@
+.modal,
+.modal.visible,
+.modal__cover {
+	height: 100%;
+	left: 0;
+	position: absolute;
+	top: 0;
+	width: 100%;
+	z-index: 5;
+}
+.modal {
+	left: -9999px;
+}
+
+	.modal__cover {
+		background: rgba(0, 0, 0, .5);
+	}
+
+	.modal__content {
+		background: #D8D4CB;
+		border-radius: 4px;
+		box-shadow: 0 0 4px black;
+		display: grid;
+		font-size: 24px;
+		padding: 15px;
+		position: absolute;
+		margin: 40px 50%;
+		text-align: center;
+		transform: translate(-50%, -200px) rotate(-50deg);
+		transition: .3s;
+		width: 290px;
+		z-index: 5;
+	}
+	.modal.visible .modal__content {
+		transform: translateX(-50%) rotate(0);
+	}

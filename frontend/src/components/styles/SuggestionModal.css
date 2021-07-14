@@ -1,0 +1,28 @@
+.modal__content.suggestion {
+	grid-template-rows: 45px 1fr 1fr 1fr;
+}
+
+	.modal__content .suggestion-type {
+		background-position: 8px 6px;
+		background-size: 22px;
+		cursor: pointer;
+		font-size: 18px;
+		margin: 0 auto;
+		padding: 8px 12px 8px 35px;
+	}
+	.modal__content .suggestion-type.faded {
+		cursor: default;
+	}
+	.modal__content .suggestion-type.selected {
+		background-color: #CEA;
+	}
+
+	.suggestion__text {
+		color: #7F765B;
+		font-size: 16px;
+		margin-top: 20px;
+	}
+
+	.suggestion__confirm-button.bt {
+		margin-top: 15px;
+	}

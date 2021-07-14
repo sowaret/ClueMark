@@ -1,0 +1,14 @@
+.gameCountdown .modal__title {
+	color: #7F765B;
+}
+
+.gameCountdown__value {
+	color: #555;
+	font-size: 70px;
+	margin: 15px 0;
+}
+
+.bt.gameCountdown__cancel-button {
+	font-size: 22px;
+	padding: 10px 12px;
+}

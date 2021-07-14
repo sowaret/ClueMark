@@ -1,0 +1,103 @@
+/* .players */
+
+	.players .note,
+	.RoomPlayer .note {
+		border: 1px solid #333;
+		display: inline-block;
+		height: 24px;
+		margin-right: 6px;
+		opacity: .3;
+		transition: border .2s, margin .2s, width .2s;
+		width: 24px;
+	}
+
+	.players .checked,
+	.RoomPlayer .note {
+		opacity: 1;
+	}
+
+	.game-active .RoomPlayer.available {
+		display: none;
+	}
+
+	.players .note-7 {
+		border-width: 1px 0;
+		margin: 0;
+		width: 0;
+	}
+	.players.orchid .note-7 {
+		border: 1px solid #333;
+		width: 24px;
+	}
+	.players.orchid .note-4 {
+		border-width: 1px 0;
+		margin: 0;
+		width: 0;
+	}
+
+
+.playerRoster {
+	margin-top: -10px;
+}
+
+	.RoomPlayer {
+		border: 1px solid #777;
+		border-width: 0 0 1px;
+		display: grid;
+		grid-template-columns: 29px 1fr 34px;
+		height: 26px;
+		overflow: hidden;
+		padding: 4px 0;
+		transition: padding .2s, height .2s;
+	}
+	.RoomPlayer.available {
+		cursor: pointer;
+	}
+	.RoomPlayer.disabled {
+		border: 0;
+		height: 0;
+		padding: 0;
+	}
+	.RoomPlayer.selected {
+		background: #CEA;
+	}
+	.RoomPlayer.disconnected::after {
+		background: transparent
+			url(../../../../img/svg/disconnected-light-tan.svg) no-repeat
+			center / 18px;
+		content: '';
+	}
+
+		.RoomPlayer .note {
+			margin: 0 0 0 5px;
+		}
+
+		.playerName {
+			font-size: 14px;
+			padding: 5px 10px;
+			transition: margin .2s;
+		}
+		.available .playerName {
+			font-size: 13px;
+			margin-left: 4px;
+			opacity: .25;
+		}
+		.you .playerName,
+		.you .charName {
+			font-weight: bold;
+		}
+		.isHost .playerName::before {
+			background: url(../../../../img/svg/crown.svg) no-repeat center /
+				15px;
+			content: '';
+			display: inline-block;
+			height: 15px;
+			margin-right: 5px;
+			vertical-align: top;
+			width: 15px;
+		}
+
+		.charName {
+			text-align: right;
+			padding: 6px;
+		}
