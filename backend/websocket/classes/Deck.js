@@ -40,13 +40,14 @@ export default class Deck {
 	}
 
 	removeCard(card) {
-		const type = (card === 'Poison') ? 'Weapons' : 'Suspects';
+		const type = card === 'Poison' ? 'Weapons' : 'Suspects';
 		this.cards[type] = this.cards[type].filter(a => a.name !== card);
 	}
 
 	shuffle(cards) {
 		// Fisher-Yates shuffle
-		let i = cards.length, j;
+		let i = cards.length,
+			j;
 		while (i) {
 			j = Math.floor(Math.random() * i--);
 			[cards[i], cards[j]] = [cards[j], cards[i]];
@@ -67,7 +68,7 @@ export default class Deck {
 			cardList = [
 				...cardList,
 				// Add the rest of the cards
-				...cards[type].filter(x => x !== solution[type])
+				...cards[type].filter(x => x !== solution[type]),
 			];
 		}
 
@@ -93,7 +94,7 @@ export default class Deck {
 			const playerName = wsPlayers[playerIndex].name;
 			// Deal cards to each player one by one
 			hands[playerName].cards.push(this.cards[dealIndex]);
-			dealIndex ++;
+			dealIndex++;
 		}
 
 		return hands;

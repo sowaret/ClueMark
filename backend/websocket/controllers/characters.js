@@ -21,8 +21,8 @@ export default {
 				type: 'SELECT_CHARACTER',
 				playerId: player.id,
 				index,
-				...prevCharIndex && { prevIndex: prevCharIndex },
-			})
+				...(prevCharIndex && { prevIndex: prevCharIndex }),
+			});
 		},
 		catch: ({ client, error }) => console.error(error),
 	},

@@ -5,19 +5,19 @@ import { API_PORT, DB_ROUTE, WS_SERVER_PORT } from './config.js';
 import apiRoutes from './routes.js';
 import createWebSocketServer from './websocket/webSocketServer.js';
 
-const connectToDatabase = _ => mongoose
+const connectToDatabase = () => mongoose
 	.connect(DB_ROUTE, {
 		useNewUrlParser: true,
 		useUnifiedTopology: true,
 	});
 
-const setUpRouterAndListen = _ => {
+const setUpRouterAndListen = () => {
 	const app = express()
 		.use( cors() )
 		.use( express.json() )
 		.use('/api', apiRoutes);
 
-	app.listen(API_PORT, _ =>
+	app.listen(API_PORT, () =>
 		console.log(`Connection successful, listening on port ${API_PORT}.`)
 	);
 };

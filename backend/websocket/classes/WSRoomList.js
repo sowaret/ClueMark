@@ -1,7 +1,9 @@
 import WSRoom from './WSRoom.js';
 
 export default class WSRoomList {
-	constructor() { this.rooms = {}; }
+	constructor() {
+		this.rooms = {};
+	}
 
 	getOrCreateWSRoom(roomDocument) {
 		const id = roomDocument._id;

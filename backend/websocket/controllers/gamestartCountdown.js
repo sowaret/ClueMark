@@ -4,9 +4,10 @@ import { send } from '../../functions.js';
 
 export default {
 	CANCEL_GAME_COUNTDOWN: {
-		try: ({ client }) => client.player.room.broadcast({
-			type: 'CANCEL_GAME_COUNTDOWN',
-		}),
+		try: ({ client }) =>
+			client.player.room.broadcast({
+				type: 'CANCEL_GAME_COUNTDOWN',
+			}),
 		catch: ({ client, error }) => console.error(error),
 	}, // no-op to echo to clients
 	START_GAME: {
@@ -23,17 +24,19 @@ export default {
 				Player.updateOne(
 					{ name, room: room.document },
 					{
-						$set: { cardsInHand: hands[name].cards.map(x => x.index) }
-					},
+						$set: { cardsInHand: hands[name].cards.map(x => x.index) },
+					}
 				).exec();
 			}
 
 			await Room.updateOne(
 				{ _id: room.document._id },
-				{ $set: {
-					isActive: true,
-					activeGamePlayers: room.wsPlayers.map(x => x.document),
-				}}
+				{
+					$set: {
+						isActive: true,
+						activeGamePlayers: room.wsPlayers.map(x => x.document),
+					},
+				}
 			).exec();
 		},
 		catch: ({ client, error }) => console.error(error),
@@ -46,7 +49,6 @@ export default {
 
 			// If no one else has joined yet
 			if (roomUserCount === 1) err = 'Please wait for more players to join.';
-
 			// If there are players who haven't picked a character yet
 			else if (roomUserCount !== Object.keys(room.playerSlots).length) {
 				err = 'Some players have not picked a character yet.';

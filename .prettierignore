@@ -1,3 +1,5 @@
 .parcel-cache/
 dist/
+extra/
 node_modules/
+*.css

@@ -18,8 +18,8 @@ export default class WSPlayer {
 	}
 
 	save() {
-		this.document.save().catch(err =>
-			console.error('Error saving player:', err)
-		);
+		this.document
+			.save()
+			.catch(err => console.error('Error saving player:', err));
 	}
 }

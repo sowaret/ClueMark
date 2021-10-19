@@ -15,7 +15,7 @@ export default class WSRoom {
 
 		// Clone the document into this class
 		dbKeysToClone.map(key => {
-			this[key] = roomDocument[key]
+			this[key] = roomDocument[key];
 		});
 
 		this.id = roomDocument._id;
@@ -41,7 +41,7 @@ export default class WSRoom {
 
 		const charIndex = wsPlayer.document.charIndex;
 		if (charIndex !== null) {
-			const playerSlots = {...this.playerSlots};
+			const playerSlots = { ...this.playerSlots };
 			delete playerSlots[charIndex];
 			this.playerSlots = playerSlots;
 
@@ -73,9 +73,7 @@ export default class WSRoom {
 	*/
 	broadcast(data, each = false) {
 		this.wsPlayers.forEach(player => {
-			const _data = each
-				? data[player.name]
-				: data;
+			const _data = each ? data[player.name] : data;
 
 			// This will do nothing for players who had no data for `each`
 			if (_data) send(player.client, _data);
@@ -83,13 +81,12 @@ export default class WSRoom {
 	}
 
 	setCharacterPlayer(player, index) {
-		const playerSlots = {...this.playerSlots};
+		const playerSlots = { ...this.playerSlots };
 		// Do nothing if a player has already selected this character
 		if (playerSlots[index]) return;
 
-		const prevIndex = player.document.charIndex !== null
-			? player.document.charIndex
-			: null;
+		const prevIndex =
+			player.document.charIndex !== null ? player.document.charIndex : null;
 
 		// Remove player from any previous character
 		if (prevIndex) delete playerSlots[prevIndex];
@@ -103,7 +100,7 @@ export default class WSRoom {
 	}
 
 	bootWhiteOrchid() {
-		const playerSlots = {...this.document.playerSlots};
+		const playerSlots = { ...this.document.playerSlots };
 		delete playerSlots[4];
 		delete playerSlots[7];
 
@@ -118,14 +115,14 @@ export default class WSRoom {
 		if (key === 'orchidEnabled')
 			this.wsPlayers
 				.filter(p => p.charIndex === 3 || p.charIndex === 6) // White/Orchid
-				.forEach(p => { p.charIndex = null; });
+				.forEach(p => {
+					p.charIndex = null;
+				});
 
 		return this;
 	}
 
 	_save() {
-		this.document.save(err =>
-			err && console.log('Error saving room:', err)
-		);
+		this.document.save(err => err && console.log('Error saving room:', err));
 	}
 }
