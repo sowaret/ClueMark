@@ -51,7 +51,7 @@ const Roster = () => {
 					player={i}
 					enabled={playerCharacters[i]}
 					onClick={onClick}
-					key={`opt-player-${i}`}
+					key={i}
 				/>
 			);
 		}

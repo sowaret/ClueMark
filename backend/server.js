@@ -2,20 +2,17 @@ import cors from 'cors';
 import express from 'express';
 import mongoose from 'mongoose';
 import { API_PORT, DB_ROUTE, WS_SERVER_PORT } from './config.js';
-import apiRoutes from './routes.js';
+import apiRoutes from './routes/index.js';
 import createWebSocketServer from './websocket/webSocketServer.js';
 
-const connectToDatabase = () => mongoose
-	.connect(DB_ROUTE, {
+const connectToDatabase = () =>
+	mongoose.connect(DB_ROUTE, {
 		useNewUrlParser: true,
 		useUnifiedTopology: true,
 	});
 
 const setUpRouterAndListen = () => {
-	const app = express()
-		.use( cors() )
-		.use( express.json() )
-		.use('/api', apiRoutes);
+	const app = express().use(cors()).use(express.json()).use('/api', apiRoutes);
 
 	app.listen(API_PORT, () =>
 		console.log(`Connection successful, listening on port ${API_PORT}.`)
@@ -25,9 +22,7 @@ const setUpRouterAndListen = () => {
 const handleConnectError = err =>
 	console.log('Could not connect to database:', err.toString());
 
-connectToDatabase()
-	.then(setUpRouterAndListen)
-	.catch(handleConnectError);
+connectToDatabase().then(setUpRouterAndListen).catch(handleConnectError);
 
 // Handle errors after initial connection
 mongoose.connection.on(
