@@ -1,4 +1,5 @@
 import React from 'react';
+import useClasses from '../hooks/useClasses';
 
 const RoomPlayer = ({
 	charIndex,
@@ -9,15 +10,14 @@ const RoomPlayer = ({
 	selected,
 	onClick,
 }) => {
-	const classes = [
+	const classes = useClasses(
 		'RoomPlayer',
-		...(you ? ['you'] : ''),
-		...(!name ? ['available'] : ''),
-		...(isHost ? ['isHost'] : ''),
-		...(disabled ? ['disabled'] : ''),
-		...(selected ? ['selected'] : ''),
-	].join(' ');
-
+		you && 'you',
+		!name && 'available',
+		isHost && 'isHost',
+		disabled && 'disabled',
+		selected && 'selected'
+	);
 	const nameDisplay = name || 'Click to select character';
 
 	return (

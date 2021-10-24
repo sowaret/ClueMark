@@ -1,6 +1,7 @@
 import React from 'react';
 import { setSelectedCardId } from '../../../features/suggestionSlice';
 import { cardList } from '../../../features/utils/cardList';
+import useClasses from '../../../hooks/useClasses';
 import { handleSuggestionResponse } from './suggestionResponse';
 
 const elementText = {
@@ -30,12 +31,12 @@ export const getSuggestionDisplay = ({
 
 	const suggestionDisplay = Object.keys(suggestionCards).map((type, i) => {
 		const cardId = suggestionCards[type];
-		const classes = [
+		const classes = useClasses(
 			'suggestion-type',
 			type,
-			...(playerHand.includes(cardId) ? '' : ['faded']),
-			...(selectedCardId === cardId ? ['selected'] : ''),
-		].join(' ');
+			!playerHand.includes(cardId) && 'faded',
+			selectedCardId === cardId && 'selected'
+		);
 
 		return (
 			<div

@@ -1,9 +1,10 @@
 import React from 'react';
+import useClasses from '../hooks/useClasses';
 import './styles/Modal.css';
 
 const Modal = ({ name, title, isVisible, children }) => {
-	const classes = ['modal', ...(isVisible ? ['visible'] : '')].join(' ');
-	const contentClasses = ['modal__content', name].join(' ');
+	const classes = useClasses('modal', isVisible && 'visible');
+	const contentClasses = useClasses('modal__content', name);
 
 	return (
 		<div className={classes}>

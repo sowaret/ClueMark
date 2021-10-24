@@ -2,6 +2,7 @@ import React, { useEffect, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { cardList } from '../../../features/utils/cardList';
 import { setSuggestionResponse } from '../../../features/suggestionSlice';
+import useClasses from '../../../hooks/useClasses';
 import { wsSendSuggestion } from '../../../webSocketModule';
 import './styles/Suggestions';
 
@@ -23,12 +24,12 @@ const Suggestions = () => {
 		// Player ID or card data
 		const selection = type === 'player' ? selectedPlayerId : selectedCard[type];
 
-		const classes = [
+		const classes = useClasses(
 			'suggestion-type',
 			type,
 			// Fade empty selections
-			selection === null ? ['faded'] : '',
-		].join(' ');
+			selection === null && 'faded'
+		);
 
 		const text =
 			type === 'player'

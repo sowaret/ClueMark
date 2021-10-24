@@ -1,6 +1,7 @@
 import React, { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { togglePanel } from '../features/appSlice';
+import useClasses from '../hooks/useClasses';
 import { wsConnect } from '../webSocketModule';
 import RoomManager from './panels/RoomManager';
 import GameManager from './panels/GameManager';
@@ -20,29 +21,26 @@ const Notepad = () => {
 	const panelName = useSelector(state => state.app.openPanelName);
 	const playerJoinKey = useSelector(state => state.player.joinKey);
 
-	const dispatch = useDispatch();
-
-	const classes = [
+	const classes = useClasses(
 		'notepad',
-		...(panelName ? [`${panelName}-open`] : ''),
-		...(isOnlineGameConnected ? ['room-game'] : ''),
-		...(isGameActive ? ['game-active'] : ''),
-		...(useDrOrchid ? ['useDrOrchid'] : ''),
-		...(showPoison ? '' : ['hidePoison']),
+		panelName && `${panelName}-open`,
+		isOnlineGameConnected && 'room-game',
+		isGameActive && 'game-active',
+		useDrOrchid && 'useDrOrchid',
+		!showPoison && 'hidePoison',
 		// If a room is joined and the player is not the host
-		...(isOnlineGameConnected &&
-		(!playerJoinKey || gameHostKey !== playerJoinKey)
-			? ['not-host']
-			: ''),
-	].join(' ');
-
-	const roomToggleClasses = [
+		isOnlineGameConnected &&
+			(!playerJoinKey || gameHostKey !== playerJoinKey) &&
+			'not-host'
+	);
+	const roomToggleClasses = useClasses(
 		'panel-toggle',
 		'roomToggle',
-		...(isOnlineGameConnected ? ['joined'] : ''),
-	].join(' ');
+		isOnlineGameConnected && 'joined'
+	);
 
-	// on mount
+	const dispatch = useDispatch();
+
 	useEffect(() => {
 		dispatch(wsConnect('ws://localhost:8080'));
 	}, []);

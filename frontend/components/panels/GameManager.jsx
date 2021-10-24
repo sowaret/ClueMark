@@ -2,6 +2,7 @@ import React, { useEffect, useRef } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { closePanels } from '../../features/appSlice';
 import { setCommand, setGameStartSeconds } from '../../features/gameSlice';
+import useClasses from '../../hooks/useClasses';
 import {
 	wsSetShowPoison,
 	wsSetUseDrOrchid,
@@ -34,10 +35,10 @@ const GameManager = () => {
 	const gamestartCountdownTimeoutRef = useRef();
 	const dispatch = useDispatch();
 
-	const gameManagerAndIsOpenClasses = [
+	const gameManagerAndIsOpenClasses = useClasses(
 		'game-manager',
-		openPanel === 'game-manager' ? ['open'] : '',
-	].join(' ');
+		openPanel === 'game-manager' && 'open'
+	);
 
 	const headerText = isGameActive ? 'Make a suggestion' : 'Options';
 
