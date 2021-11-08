@@ -1,4 +1,3 @@
-import disallowedCodes from '../disallowedCodes.js';
 import { generateJoinKey } from '../functions.js';
 import { Room, Player } from '../models.js';
 import handleError from './handleError.js';
@@ -18,7 +17,8 @@ const makeID = length => {
 const generateRoomCode = async () => {
 	const code = makeID(4);
 	try {
-		if (disallowedCodes.includes(code)) return await generateRoomCode();
+		if (process.env.DISALLOWED_CODES.split(',').includes(code))
+			return await generateRoomCode();
 
 		const room = await Room.findOne({ code });
 		if (room) return await generateRoomCode();

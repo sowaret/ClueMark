@@ -40,9 +40,9 @@ export const suggestionSlice = createSlice({
 					...state,
 					...responseDefault,
 				};
-			else if (action.payload === 'waiting') {
-				state.responseState = -1;
-			} else {
+			if (action.payload === 'waiting') state.responseState = -1;
+			else if (action.payload === 'no-cards') state.responseState = -2;
+			else {
 				const { cardId, responderName } = action.payload;
 				state.responderName = responderName;
 				state.responseState = cardId;

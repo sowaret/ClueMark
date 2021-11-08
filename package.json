@@ -16,6 +16,7 @@
 		"@sowaret/redux-websocket-middleware": "^1.2.0",
 		"axios": "^0.21.1",
 		"cors": "^2.8.5",
+		"dotenv": "^7.0.0",
 		"express": "^4.17.1",
 		"mongoose": "^5.12.1",
 		"react": "^17.0.1",

@@ -12,9 +12,19 @@
 .suggestion-type.player {
 	background-image: url(../../../../img/svg/person-tan.svg);
 }
+
+.bt.suggestion-modal {
+	background-position: 14px 9px;
+	background-repeat: no-repeat;
+	background-size: 24px;
+	margin-bottom: 8px;
+	padding: 12px 16px 12px 47px;
+}
+
 .bt.send-suggestion {
-	background: #C9BFAB url(../../../../img/svg/send-suggestion.svg)
-		no-repeat 6px 4px / 21px;
-	margin: 10px;
-	padding-left: 30px;
+	background-image: url(../../../../img/svg/send-suggestion.svg);
+}
+
+.bt.make-accusation {
+	background-image: url('../../../../img/svg/gavel.svg');
 }

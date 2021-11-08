@@ -1,6 +1,7 @@
 .notepad {
 	background: #D8D4CB; /* tan */
 	color: #000;
+	margin: 0 auto;
 	position: relative;
 	width: 350px;
 }

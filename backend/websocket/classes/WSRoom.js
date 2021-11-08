@@ -82,8 +82,14 @@ export default class WSRoom {
 
 	setCharacterPlayer(player, index) {
 		const playerSlots = { ...this.playerSlots };
-		// Do nothing if a player has already selected this character
-		if (playerSlots[index]) return;
+		/*  Do nothing if a player has already selected this character
+			or if their White/Orchid selection is not available */
+		if (
+			playerSlots[index] ||
+			(index === 4 && this.orchidEnabled) ||
+			(index === 7 && !this.orchidEnabled)
+		)
+			return;
 
 		const prevIndex =
 			player.document.charIndex !== null ? player.document.charIndex : null;
@@ -99,30 +105,28 @@ export default class WSRoom {
 		return prevIndex;
 	}
 
-	bootWhiteOrchid() {
-		const playerSlots = { ...this.document.playerSlots };
+	bootWhiteOrchid(isOrchidEnabled) {
+		isOrchidEnabled = isOrchidEnabled === 'true' || isOrchidEnabled === true;
+		const playerSlots = { ...this.playerSlots };
 		delete playerSlots[4];
 		delete playerSlots[7];
-
 		this.playerSlots = playerSlots;
+		this.wsPlayers
+			.filter(p => p.charIndex === 3 || p.charIndex === 6) // White/Orchid
+			.forEach(p => {
+				p.charIndex = null;
+			});
+		this._update('orchidEnabled', isOrchidEnabled);
+		this._save();
 	}
 
 	_update(key, value) {
 		this[key] = value;
 		this.document[key] = value;
-
-		// Boot any players off White or Orchid when this setting is toggled
-		if (key === 'orchidEnabled')
-			this.wsPlayers
-				.filter(p => p.charIndex === 3 || p.charIndex === 6) // White/Orchid
-				.forEach(p => {
-					p.charIndex = null;
-				});
-
 		return this;
 	}
 
 	_save() {
-		this.document.save(err => err && console.log('Error saving room:', err));
+		this.document.save().catch(err => console.log('Error saving room:', err));
 	}
 }

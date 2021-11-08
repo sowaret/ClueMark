@@ -6,6 +6,7 @@ import { wsConnect } from '../webSocketModule';
 import RoomManager from './panels/RoomManager';
 import GameManager from './panels/GameManager';
 import NotepadSections from './utils/Notepad';
+import AccusationResponseModal from './AccusationResponseModal';
 import ConnectionManager from './ConnectionManager';
 import SuggestionModal from './SuggestionModal';
 import GameCountdownModal from './GameCountdownModal';
@@ -42,7 +43,14 @@ const Notepad = () => {
 	const dispatch = useDispatch();
 
 	useEffect(() => {
-		dispatch(wsConnect('ws://localhost:8080'));
+		dispatch(
+			wsConnect(
+				location.protocol.replace(/^http/, 'ws') +
+					location.hostname +
+					':' +
+					process.env.WS_SERVER_PORT
+			)
+		);
 	}, []);
 
 	return (
@@ -50,6 +58,7 @@ const Notepad = () => {
 			<ConnectionManager />
 			<SuggestionModal />
 			<GameCountdownModal />
+			<AccusationResponseModal />
 
 			<button
 				className={roomToggleClasses}

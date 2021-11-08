@@ -54,7 +54,7 @@ export default {
 				err = 'Some players have not picked a character yet.';
 			}
 
-			if (err) return send(client, { error: true, msg: err });
+			if (err) return send(client, { type: 'START_GAME_ERROR', err });
 
 			room.broadcast({ type: 'START_GAME_COUNTDOWN' });
 		},

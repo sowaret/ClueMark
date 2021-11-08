@@ -8,6 +8,8 @@ export const getSuggestionResponseDisplay = ({ dispatch, responseState }) => {
 	const message =
 		responseState === -1
 			? 'Waiting for a response...'
+			: responseState === -2
+			? 'Player does not have any of those cards.'
 			: cardList[responseState].name;
 
 	return {

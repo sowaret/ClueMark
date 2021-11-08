@@ -1,5 +1,5 @@
 import axios from 'axios';
-import { backendURL } from '../../../config';
+import { API_URL } from '../../../enums';
 import { setCommand, setGameValue } from '../../../features/gameSlice';
 import {
 	resetInputErrors,
@@ -10,7 +10,7 @@ import { wsCreateRoom } from '../../../webSocketModule';
 import { dispatchRoomJoinData, saveJoinKeyInLocalStorage } from './shared';
 
 const handleRoomCreate = async ({ name, dispatch }) => {
-	const res = await axios.post(`${backendURL}/createRoom`, { name });
+	const res = await axios.post(`${API_URL}/createRoom`, { name });
 	const { hostId, joinKey, roomCode } = res.data;
 
 	dispatchRoomJoinData({

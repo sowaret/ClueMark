@@ -41,7 +41,7 @@ export default {
 				localStorage.getItem('roomCharIndexes')
 			);
 			const prevIndex = roomCharIndexes[`${payload.roomCode}.${payload.name}`];
-			if (prevIndex === null) return; // null or undefined
+			if (prevIndex == null) return; // null or undefined
 
 			// Unset localStorage charIndex if another player has since selected this character
 			if (payload.playerSlots[prevIndex]) {

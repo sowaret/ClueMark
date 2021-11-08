@@ -1,0 +1,26 @@
+.modal__content.accusation {
+	font-size: 1rem;
+	margin-top: 30px;
+}
+
+	.accusation .modal__title {
+		font-size: 24px;
+		margin-bottom: 10px;
+	}
+
+	.accusation__warn {
+		color: #7F765B;
+		font-size: .9rem;
+		font-style: italic;
+		line-height: 1.4rem;
+		margin: 10px 0;
+	}
+
+	.modal__content.accusation .suggestion-type {
+		cursor: default;
+		font-size: 1rem;
+	}
+
+	.bt.accusation__cancel {
+		text-decoration: underline;
+	}

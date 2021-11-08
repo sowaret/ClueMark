@@ -24,33 +24,23 @@ Clone the repository and run `npm install` in the project's directory.
 
 ## Setup
 
-### Frontend
-- Create a file at `frontend/src/config.js` with the following export:
+### Environment
+- Create a `.env` file with the following variables:
 
-	```js
-	export const backendURL = '<http(s)>://<hostname>:<API_PORT>/api';
+	```
+	API_PORT=3001
+	# MongoDB connection string
+	DB_ROUTE=mongodb://username:password@host/database
+	# Comma-separated list of disallowed room codes
+	DISALLOWED_CODES=CODE,ROOM,CLUE,ETCC
+	WS_SERVER_PORT=8080
 	```
 
+### Frontend
 - The port can be changed by editing the `-p` flag of the `start` command in `package.json`:
 
 	```js
 	"start": "parcel frontend/index.html -p 1235"
-	```
-
-### Backend
-- Create a file at `backend/config.js` with the following exports:
-
-	```js
-	export const API_PORT = 3001;
-	// MongoDB connection string
-	export const DB_ROUTE = 'mongodb://username:password@host/database';
-	export const WS_SERVER_PORT = 8080;
-	```
-
-- Create a file at `backend/disallowedCodes.js` containing the following:
-
-	```js
-	module.exports = [ /* Comma-separated list of disallowed codes */ ];
 	```
 
 

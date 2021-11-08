@@ -1,12 +1,13 @@
+import dotenv from 'dotenv';
+dotenv.config();
 import cors from 'cors';
 import express from 'express';
 import mongoose from 'mongoose';
-import { API_PORT, DB_ROUTE, WS_SERVER_PORT } from './config.js';
 import apiRoutes from './routes/index.js';
 import createWebSocketServer from './websocket/webSocketServer.js';
 
 const connectToDatabase = () =>
-	mongoose.connect(DB_ROUTE, {
+	mongoose.connect(process.env.DB_ROUTE, {
 		useNewUrlParser: true,
 		useUnifiedTopology: true,
 	});
@@ -14,8 +15,10 @@ const connectToDatabase = () =>
 const setUpRouterAndListen = () => {
 	const app = express().use(cors()).use(express.json()).use('/api', apiRoutes);
 
-	app.listen(API_PORT, () =>
-		console.log(`Connection successful, listening on port ${API_PORT}.`)
+	app.listen(process.env.API_PORT, () =>
+		console.log(
+			`Connection successful, listening on port ${process.env.API_PORT}.`
+		)
 	);
 };
 
@@ -30,4 +33,4 @@ mongoose.connection.on(
 	console.error.bind(console, 'MongoDB connection error:')
 );
 
-createWebSocketServer(WS_SERVER_PORT);
+createWebSocketServer(process.env.WS_SERVER_PORT);

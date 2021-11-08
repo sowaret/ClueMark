@@ -1,4 +1,5 @@
 import { applyMiddleware, combineReducers, compose, createStore } from 'redux';
+import accusation from './features/accusationSlice';
 import app from './features/appSlice';
 import cards from './features/cardsSlice';
 import game from './features/gameSlice';
@@ -8,6 +9,7 @@ import suggestion from './features/suggestionSlice';
 import wsMiddleware from './websocket/middleware';
 
 const reducers = combineReducers({
+	accusation,
 	app,
 	cards,
 	game,
@@ -16,12 +18,9 @@ const reducers = combineReducers({
 	suggestion,
 });
 
+const composeEnhancers = window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__ || compose;
+
 export default createStore(
 	reducers,
-	compose(
-		applyMiddleware(wsMiddleware),
-		window.__REDUX_DEVTOOLS_EXTENSION__
-			? window.__REDUX_DEVTOOLS_EXTENSION__()
-			: f => f
-	)
+	composeEnhancers(applyMiddleware(wsMiddleware))
 );

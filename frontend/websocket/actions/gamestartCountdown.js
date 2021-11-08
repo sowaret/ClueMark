@@ -2,7 +2,7 @@ import { setNoteColumnValues } from '../../features/cardsSlice';
 import { setIsGameActive, setGameStartSeconds } from '../../features/gameSlice';
 import { setHandCardIds } from '../../features/playerSlice';
 
-export default {
+const definitions = {
 	START_GAME_COUNTDOWN: {
 		reducer: ({ dispatch }) => dispatch(setGameStartSeconds(3)),
 	},
@@ -26,3 +26,10 @@ export default {
 		},
 	},
 };
+
+const otherReducers = {
+	START_GAME_ERROR: ({ payload }) =>
+		alert('Could not start game:\n' + payload.err),
+};
+
+export default { definitions, otherReducers };

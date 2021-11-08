@@ -1,5 +1,5 @@
 import axios from 'axios';
-import { backendURL } from '../../../config';
+import { API_URL } from '../../../enums';
 import { setCommand } from '../../../features/gameSlice';
 import {
 	setIsPosting,
@@ -24,7 +24,7 @@ const getJoinParams = ({ nameInput, roomCodeInput }) => {
 };
 
 const handleRoomJoin = async (joinParams, dispatch) => {
-	const res = await axios.post(`${backendURL}/joinRoom`, joinParams);
+	const res = await axios.post(`${API_URL}/joinRoom`, joinParams);
 	const { name, roomCode, joinKey } = joinParams;
 	const { hostKey, playerId } = res.data;
 	const _joinKey = joinKey || res.data.joinKey;

@@ -14,9 +14,7 @@ export default {
 		try: async ({ client, data }) => {
 			const { room } = client.player;
 			const { enabled } = data;
-			room._update('orchidEnabled', enabled);
-			room.bootWhiteOrchid();
-			room._save();
+			room.bootWhiteOrchid(enabled);
 			client.player.room.broadcast({
 				type: 'SET_USE_DR_ORCHID',
 				enabled,
